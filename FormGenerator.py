@@ -296,7 +296,7 @@ EOT;
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
 
     <meta charset="UTF-8">
-    <title>Contact form</title>	
+    <title>{{ EventName }}</title>	
 <style type="text/css">
 html{
     background-color: #f3f3f3;

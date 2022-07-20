@@ -4,6 +4,7 @@ import numpy as np
 import datetime
 import re
 from jinja2 import Environment, PackageLoader, select_autoescape, FileSystemLoader, Template
+from streamlit_quill import st_quill
 
 ### MAIL INFO
 MailHost = st.secrets.MailHost
@@ -785,8 +786,8 @@ Name = st.text_input('Skriv navnet på eventet nedenfor', placeholder="Navn på 
 
 ## Eventbeskrivelse
 st.header("Angiv beskrivelse af eventet")
-Description = st.text_area('Skriv en beskrivelse af eventet nedenfor', placeholder="Beskrivelse..",height=200, key="EventDescription")
-
+#Description = st.text_area('Skriv en beskrivelse af eventet nedenfor', placeholder="Beskrivelse..",height=200, key="EventDescription")
+Description = st_quill(placeholder='Skriv en beskrivelse af eventet nedenfor', html=True, key="EventDescription")
 
 ## Praktiske oplysninger
 st.header("")
@@ -890,7 +891,11 @@ if st.button('Færdig', key="DoneButton") or st.session_state.button_clicked:
      st.write(st.session_state["EventName"])
      st.header("")
      st.subheader("Event-Beskrivelse")
-     st.write(st.session_state["EventDescription"])
+     #Match any sequence of "<p><br></p>" that is not followed by "<p><br>" and replace that sequence with what comes after
+     # the matched "<p><br></p>". It basically removes any patterns of <p><br></p> unless there is a pattern:
+     # "<p><br></p><p><br></p>xyz" where only the first "<p><br></p>" is removed while the other one stays.
+     replacer=re.sub(r'<p><br></p>((?!(<p><br>)))',r'\1',st.session_state["EventDescription"])
+     st.write(replacer,unsafe_allow_html=True)
      st.header("")
      st.subheader("Praktiske Oplysninger")
      st.write("Eventet foregår på: " + st.session_state["Address"] + " fra den: " + str(st.session_state["FromDate"]) + " kl: " + str(st.session_state["FromTime"]) + " til den: " + str(st.session_state["ToDate"]) + " kl: " + str(st.session_state["ToTime"]))
@@ -925,7 +930,7 @@ if st.button('Færdig', key="DoneButton") or st.session_state.button_clicked:
                            MailReplytoName = MailReplytoName,
                            InternMailTo = InternMailTo, 
                            EventName = st.session_state["EventName"],
-                           EventDescription = st.session_state["EventDescription"],
+                           EventDescription = replacer,
                            FromDate = st.session_state["FromDate"],
                            FromTime = st.session_state["FromTime"],
                            ToDate = st.session_state["ToDate"],

@@ -584,7 +584,7 @@ padding:10px;
 
         <!-- You only need this form and the form-basic.css -->
 
-        <form class="form-basic" name="myForm" onsubmit = "return validateForm()" method="post">
+        <form class="form-basic" name="myForm" onsubmit = "return validateForm()" action="ThankYou.html" method="post">
 			<img src="logo_hr.png" alt="DanskHR">
             <div class="form-title-row">
                 <h1>{{ EventName }}</h1>

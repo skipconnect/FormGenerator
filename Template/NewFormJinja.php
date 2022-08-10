@@ -9,13 +9,13 @@ $msg = '';
 $valid = 'yes';
 
 //CHECKS FOR INPUT
-if (isset($_POST['Submit']) && !isset($_POST['BilletRadio'])){
-	$msg = 'Ingen billet valgt. Prøv igen.';
+if (isset($_POST['Submit']) && !isset($_POST['betingelser'])){
+	$msg = 'Betingelser skal accepteres. Prøv igen.';
 	$valid = 'no';
 }
 
 
-{% for Field,req,stripped in FeltList %}
+{% for Field,req,stripped in FeltList|reverse %}
 {% if req == "Ja" %}
 if (isset($_POST['Submit']) && $_POST['{{ stripped }}'] == ""){
 	$msg = '{{ Field }} er påkrævet. Prøv igen.';
@@ -23,6 +23,11 @@ if (isset($_POST['Submit']) && $_POST['{{ stripped }}'] == ""){
 }
 {% endif %}
 {% endfor %}
+
+if (isset($_POST['Submit']) && !isset($_POST['BilletRadio'])){
+	$msg = 'Ingen billet valgt. Prøv igen.';
+	$valid = 'no';
+}
 
 
 //Don't run this unless we're handling a form submission

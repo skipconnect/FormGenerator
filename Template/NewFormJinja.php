@@ -95,6 +95,8 @@ EOT;
             $msg = 'Beskeden blev sendt! En bekræftelsesmail er sendt afsted til din e-mail';
 			// Send besked til DANSK HR HER
 			$mailintern ->send();
+			header('Location: ThankYou.html');
+			exit();
         }
     } 
 	// Second check
@@ -110,6 +112,8 @@ EOT;
             $msg = 'Beskeden blev sendt! En bekræftelsesmail er sendt afsted til din e-mail';
 			// Send besked til DANSK HR HER
 			$mailintern ->send();
+			header('Location: ThankYou.html');
+			exit();
         }	
 	}
 	// Third check
@@ -125,6 +129,8 @@ EOT;
             $msg = 'Beskeden blev sendt! En bekræftelsesmail er sendt afsted til din e-mail';
 			// Send besked til DANSK HR HER
 			$mailintern ->send();
+			header('Location: ThankYou.html');
+			exit();
         }	
 	}
 	// Fourth check
@@ -140,6 +146,8 @@ EOT;
             $msg = 'Beskeden blev sendt! En bekræftelsesmail er sendt afsted til din e-mail';
 			// Send besked til DANSK HR HER
 			$mailintern ->send();
+			header('Location: ThankYou.html');
+			exit();
         }	
 	}
 	// Fifth check
@@ -155,6 +163,8 @@ EOT;
             $msg = 'Beskeden blev sendt! En bekræftelsesmail er sendt afsted til din e-mail';
 			// Send besked til DANSK HR HER
 			$mailintern ->send();
+			header('Location: ThankYou.html');
+			exit();
         }	
 	}
 	// sixth check
@@ -170,6 +180,8 @@ EOT;
             $msg = 'Beskeden blev sendt! En bekræftelsesmail er sendt afsted til din e-mail';
 			// Send besked til DANSK HR HER
 			$mailintern ->send();
+			header('Location: ThankYou.html');
+			exit();
         }	
 	}
 	// seventh check
@@ -185,6 +197,8 @@ EOT;
             $msg = 'Beskeden blev sendt! En bekræftelsesmail er sendt afsted til din e-mail';
 			// Send besked til DANSK HR HER
 			$mailintern ->send();
+			header('Location: ThankYou.html');
+			exit();
         }	
 	}
 	// eighth check
@@ -200,6 +214,8 @@ EOT;
             $msg = 'Beskeden blev sendt! En bekræftelsesmail er sendt afsted til din e-mail';
 			// Send besked til DANSK HR HER
 			$mailintern ->send();
+			header('Location: ThankYou.html');
+			exit();
         }	
 	}
 	// Nineth check
@@ -215,6 +231,8 @@ EOT;
             $msg = 'Beskeden blev sendt! En bekræftelsesmail er sendt afsted til din e-mail';
 			// Send besked til DANSK HR HER
 			$mailintern ->send();
+			header('Location: ThankYou.html');
+			exit();
         }	
 	}
 	// Tenth check
@@ -230,6 +248,8 @@ EOT;
             $msg = 'Beskeden blev sendt! En bekræftelsesmail er sendt afsted til din e-mail';
 			// Send besked til DANSK HR HER
 			$mailintern ->send();
+			header('Location: ThankYou.html');
+			exit();
         }	
 	}
 	// Elleventh check
@@ -245,6 +265,8 @@ EOT;
             $msg = 'Beskeden blev sendt! En bekræftelsesmail er sendt afsted til din e-mail';
 			// Send besked til DANSK HR HER
 			$mailintern ->send();
+			header('Location: ThankYou.html');
+			exit();
         }	
 	}
 	// Twelveth check
@@ -260,6 +282,8 @@ EOT;
             $msg = 'Beskeden blev sendt! En bekræftelsesmail er sendt afsted til din e-mail';
 			// Send besked til DANSK HR HER
 			$mailintern ->send();
+			header('Location: ThankYou.html');
+			exit();
         }	
 	} else {
         $msg = 'Ikke gyldig e-mail adresse. Prøv igen.';
@@ -561,7 +585,7 @@ padding:10px;
 
         <!-- You only need this form and the form-basic.css -->
 
-        <form class="form-basic" name="myForm" onsubmit = "return validateForm()" action="ThankYou.html" method="post">
+        <form class="form-basic" name="myForm" onsubmit = "return validateForm()" method="post">
 			<img src="logo_hr.png" alt="DanskHR">
             <div class="form-title-row">
                 <h1>{{ EventName }}</h1>

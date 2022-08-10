@@ -118,6 +118,8 @@ EOT;
             $msg = 'Beskeden blev sendt! En bekræftelsesmail er sendt afsted til din e-mail';
 			// Send besked til DANSK HR HER
 			$mailintern ->send();
+			header('Location: ThankYou.html');
+			exit();
         }
     } 
 	// Second check
@@ -133,6 +135,8 @@ EOT;
             $msg = 'Beskeden blev sendt! En bekræftelsesmail er sendt afsted til din e-mail';
 			// Send besked til DANSK HR HER
 			$mailintern ->send();
+			header('Location: ThankYou.html');
+			exit();
         }	
 	}
 	// Third check
@@ -148,6 +152,8 @@ EOT;
             $msg = 'Beskeden blev sendt! En bekræftelsesmail er sendt afsted til din e-mail';
 			// Send besked til DANSK HR HER
 			$mailintern ->send();
+			header('Location: ThankYou.html');
+			exit();
         }	
 	}
 	// Fourth check
@@ -163,6 +169,8 @@ EOT;
             $msg = 'Beskeden blev sendt! En bekræftelsesmail er sendt afsted til din e-mail';
 			// Send besked til DANSK HR HER
 			$mailintern ->send();
+			header('Location: ThankYou.html');
+			exit();
         }	
 	}
 	// Fifth check
@@ -178,6 +186,8 @@ EOT;
             $msg = 'Beskeden blev sendt! En bekræftelsesmail er sendt afsted til din e-mail';
 			// Send besked til DANSK HR HER
 			$mailintern ->send();
+			header('Location: ThankYou.html');
+			exit();
         }	
 	}
 	// sixth check
@@ -193,6 +203,8 @@ EOT;
             $msg = 'Beskeden blev sendt! En bekræftelsesmail er sendt afsted til din e-mail';
 			// Send besked til DANSK HR HER
 			$mailintern ->send();
+			header('Location: ThankYou.html');
+			exit();
         }	
 	}
 	// seventh check
@@ -208,6 +220,8 @@ EOT;
             $msg = 'Beskeden blev sendt! En bekræftelsesmail er sendt afsted til din e-mail';
 			// Send besked til DANSK HR HER
 			$mailintern ->send();
+			header('Location: ThankYou.html');
+			exit();
         }	
 	}
 	// eighth check
@@ -223,6 +237,8 @@ EOT;
             $msg = 'Beskeden blev sendt! En bekræftelsesmail er sendt afsted til din e-mail';
 			// Send besked til DANSK HR HER
 			$mailintern ->send();
+			header('Location: ThankYou.html');
+			exit();
         }	
 	}
 	// Nineth check
@@ -238,6 +254,8 @@ EOT;
             $msg = 'Beskeden blev sendt! En bekræftelsesmail er sendt afsted til din e-mail';
 			// Send besked til DANSK HR HER
 			$mailintern ->send();
+			header('Location: ThankYou.html');
+			exit();
         }	
 	}
 	// Tenth check
@@ -253,6 +271,8 @@ EOT;
             $msg = 'Beskeden blev sendt! En bekræftelsesmail er sendt afsted til din e-mail';
 			// Send besked til DANSK HR HER
 			$mailintern ->send();
+			header('Location: ThankYou.html');
+			exit();
         }	
 	}
 	// Elleventh check
@@ -268,6 +288,8 @@ EOT;
             $msg = 'Beskeden blev sendt! En bekræftelsesmail er sendt afsted til din e-mail';
 			// Send besked til DANSK HR HER
 			$mailintern ->send();
+			header('Location: ThankYou.html');
+			exit();
         }	
 	}
 	// Twelveth check
@@ -283,6 +305,8 @@ EOT;
             $msg = 'Beskeden blev sendt! En bekræftelsesmail er sendt afsted til din e-mail';
 			// Send besked til DANSK HR HER
 			$mailintern ->send();
+			header('Location: ThankYou.html');
+			exit();
         }	
 	} else {
         $msg = 'Ikke gyldig e-mail adresse. Prøv igen.';
@@ -584,7 +608,7 @@ padding:10px;
 
         <!-- You only need this form and the form-basic.css -->
 
-        <form class="form-basic" name="myForm" onsubmit = "return validateForm()" action="ThankYou.html" method="post">
+        <form class="form-basic" name="myForm" onsubmit = "return validateForm()" method="post">
 			<img src="logo_hr.png" alt="DanskHR">
             <div class="form-title-row">
                 <h1>{{ EventName }}</h1>
@@ -769,6 +793,7 @@ function validateForm() {
 </script>
 </body>
 </html>"""
+</script>
 
 
 def stripper(my_str):
@@ -781,7 +806,7 @@ st.markdown("<h1 style='text-align: center; color: grey;'>DanskHR Tildmeldingsfo
 
 ## Eventnavn
 st.header("Angiv navnet på eventet")
-Name = st.text_input('Skriv navnet på eventet nedenfor', placeholder="Navn på event", key="EventName")
+Name = st.text_input(' ', placeholder="Navn på event", key="EventName")
 
 
 ## Eventbeskrivelse
@@ -802,7 +827,7 @@ Where2 = col2.text_input('Skriv hvor eventet foregår nedenfor', placeholder="Ad
 #Hvornår
 col1, col2, col3,col4,col5 = st.columns(5)
 space = col1.markdown("##")
-When1 = col1.subheader("Hvornår")
+When1 = col1.subheader("Hvornår?")
 When2 = col2.date_input('Fra Dato', key="FromDate")
 When3 = col3.time_input('Klokken:',value=datetime.time(0, 00), key="FromTime")
 When4 = col4.date_input('Til Dato', key="ToDate")
@@ -850,7 +875,7 @@ for i in range(BT):
 ## Felter
 st.header("")
 st.header("")
-st.header("Vælg antallet af Tilmeldingsfelter")
+st.header("Angiv her hvor meget information deltageren skal angive om sig selv.")
 F = st.slider('Slide for at vælge antallet af ønskede tilmeldingsfelter', 0, 20, 1)
 
 
@@ -864,7 +889,7 @@ for i in range(F):
 st.header("")
 st.header("")
 st.header("Skriv adgangskode for download")
-Pass = st.text_input('Skriv adganskode for download', type="password", key="Pass")
+Pass = st.text_input(' ', type="password", key="Pass")
 
 #Fix for nested buttons
 if "button_clicked" not in st.session_state:

@@ -6,8 +6,27 @@ use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
 $msg = '';
+$valid = 'yes';
+
+//CHECKS FOR INPUT
+if (isset($_POST['Submit']) && !isset($_POST['BilletRadio'])){
+	$msg = 'Ingen billet valgt. Prøv igen.';
+	$valid = 'no';
+}
+
+
+{% for Field,req,stripped in FeltList %}
+{% if req == "Ja" %}
+if (isset($_POST['Submit']) && $_POST['{{ stripped }}'] == ""){
+	$msg = '{{ Field }} er påkrævet. Prøv igen.';
+	$valid = 'no';
+}
+{% endif %}
+{% endfor %}
+
+
 //Don't run this unless we're handling a form submission
-if (isset($_POST['Submit'])) {
+if (isset($_POST['Submit']) && $valid == "yes") {
     date_default_timezone_set('Etc/UTC');
 
     require 'PHPMailer/src/Exception.php';

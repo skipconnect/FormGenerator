@@ -793,7 +793,6 @@ function validateForm() {
 </script>
 </body>
 </html>"""
-</script>
 
 
 def stripper(my_str):

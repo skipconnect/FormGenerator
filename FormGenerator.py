@@ -161,9 +161,9 @@ EOT;
 			//Add data to database (collection is eventname and id in collection is customer email)
 			$docRef = $db->collection('{{ EventName }}')->document($_POST['E-mail']);
 			$docRef->set([
-					'BilletType' => {$_POST["BilletRadio"]},
+					'BilletType' => $_POST["BilletRadio"],
 					{% for Field,req,stripped in FeltList %}
-					'{{ Field }}'=> {$_POST['{{ stripped }}']},
+					'{{ Field }}'=> $_POST['{{ stripped }}'],
 					{% endfor %}
 					]);
 			
@@ -188,9 +188,9 @@ EOT;
 			//Add data to database (collection is eventname and id in collection is customer email)
 			$docRef = $db->collection('{{ EventName }}')->document($_POST['E-Mail']);
 			$docRef->set([
-					'BilletType' => {$_POST["BilletRadio"]},
+					'BilletType' => $_POST["BilletRadio"],
 					{% for Field,req,stripped in FeltList %}
-					'{{ Field }}'=> {$_POST['{{ stripped }}']},
+					'{{ Field }}'=> $_POST['{{ stripped }}'],
 					{% endfor %}
 					]);
 			
@@ -215,9 +215,9 @@ EOT;
 			//Add data to database (collection is eventname and id in collection is customer email)
 			$docRef = $db->collection('{{ EventName }}')->document($_POST['e-Mail']);
 			$docRef->set([
-					'BilletType' => {$_POST["BilletRadio"]},
+					'BilletType' => $_POST["BilletRadio"],
 					{% for Field,req,stripped in FeltList %}
-					'{{ Field }}'=> {$_POST['{{ stripped }}']},
+					'{{ Field }}'=> $_POST['{{ stripped }}'],
 					{% endfor %}
 					]);
 			
@@ -242,9 +242,9 @@ EOT;
 			//Add data to database (collection is eventname and id in collection is customer email)
 			$docRef = $db->collection('{{ EventName }}')->document($_POST['e-mail']);
 			$docRef->set([
-					'BilletType' => {$_POST["BilletRadio"]},
+					'BilletType' => $_POST["BilletRadio"],
 					{% for Field,req,stripped in FeltList %}
-					'{{ Field }}'=> {$_POST['{{ stripped }}']},
+					'{{ Field }}'=> $_POST['{{ stripped }}'],
 					{% endfor %}
 					]);
 			
@@ -269,9 +269,9 @@ EOT;
 			//Add data to database (collection is eventname and id in collection is customer email)
 			$docRef = $db->collection('{{ EventName }}')->document($_POST['Email']);
 			$docRef->set([
-					'BilletType' => {$_POST["BilletRadio"]},
+					'BilletType' => $_POST["BilletRadio"],
 					{% for Field,req,stripped in FeltList %}
-					'{{ Field }}'=> {$_POST['{{ stripped }}']},
+					'{{ Field }}'=> $_POST['{{ stripped }}'],
 					{% endfor %}
 					]);
 			
@@ -296,9 +296,9 @@ EOT;
 			//Add data to database (collection is eventname and id in collection is customer email)
 			$docRef = $db->collection('{{ EventName }}')->document($_POST['EMail']);
 			$docRef->set([
-					'BilletType' => {$_POST["BilletRadio"]},
+					'BilletType' => $_POST["BilletRadio"],
 					{% for Field,req,stripped in FeltList %}
-					'{{ Field }}'=> {$_POST['{{ stripped }}']},
+					'{{ Field }}'=> $_POST['{{ stripped }}'],
 					{% endfor %}
 					]);
 			
@@ -323,9 +323,9 @@ EOT;
 			//Add data to database (collection is eventname and id in collection is customer email)
 			$docRef = $db->collection('{{ EventName }}')->document($_POST['email']);
 			$docRef->set([
-					'BilletType' => {$_POST["BilletRadio"]},
+					'BilletType' => $_POST["BilletRadio"],
 					{% for Field,req,stripped in FeltList %}
-					'{{ Field }}'=> {$_POST['{{ stripped }}']},
+					'{{ Field }}'=> $_POST['{{ stripped }}'],
 					{% endfor %}
 					]);
 			
@@ -350,9 +350,9 @@ EOT;
 			//Add data to database (collection is eventname and id in collection is customer email)
 			$docRef = $db->collection('{{ EventName }}')->document($_POST['eMail']);
 			$docRef->set([
-					'BilletType' => {$_POST["BilletRadio"]},
+					'BilletType' => $_POST["BilletRadio"],
 					{% for Field,req,stripped in FeltList %}
-					'{{ Field }}'=> {$_POST['{{ stripped }}']},
+					'{{ Field }}'=> $_POST['{{ stripped }}'],
 					{% endfor %}
 					]);
 			
@@ -377,9 +377,9 @@ EOT;
 			//Add data to database (collection is eventname and id in collection is customer email)
 			$docRef = $db->collection('{{ EventName }}')->document($_POST['E mail']);
 			$docRef->set([
-					'BilletType' => {$_POST["BilletRadio"]},
+					'BilletType' => $_POST["BilletRadio"],
 					{% for Field,req,stripped in FeltList %}
-					'{{ Field }}'=> {$_POST['{{ stripped }}']},
+					'{{ Field }}'=> $_POST['{{ stripped }}'],
 					{% endfor %}
 					]);
 			
@@ -404,9 +404,9 @@ EOT;
 			//Add data to database (collection is eventname and id in collection is customer email)
 			$docRef = $db->collection('{{ EventName }}')->document($_POST['E Mail']);
 			$docRef->set([
-					'BilletType' => {$_POST["BilletRadio"]},
+					'BilletType' => $_POST["BilletRadio"],
 					{% for Field,req,stripped in FeltList %}
-					'{{ Field }}'=> {$_POST['{{ stripped }}']},
+					'{{ Field }}'=> $_POST['{{ stripped }}'],
 					{% endfor %}
 					]);
 			
@@ -431,9 +431,9 @@ EOT;
 			//Add data to database (collection is eventname and id in collection is customer email)
 			$docRef = $db->collection('{{ EventName }}')->document($_POST['e Mail']);
 			$docRef->set([
-					'BilletType' => {$_POST["BilletRadio"]},
+					'BilletType' => $_POST["BilletRadio"],
 					{% for Field,req,stripped in FeltList %}
-					'{{ Field }}'=> {$_POST['{{ stripped }}']},
+					'{{ Field }}'=> $_POST['{{ stripped }}'],
 					{% endfor %}
 					]);
 			
@@ -458,9 +458,9 @@ EOT;
 			//Add data to database (collection is eventname and id in collection is customer email)
 			$docRef = $db->collection('{{ EventName }}')->document($_POST['e mail']);
 			$docRef->set([
-					'BilletType' => {$_POST["BilletRadio"]},
+					'BilletType' => $_POST["BilletRadio"],
 					{% for Field,req,stripped in FeltList %}
-					'{{ Field }}'=> {$_POST['{{ stripped }}']},
+					'{{ Field }}'=> $_POST['{{ stripped }}'],
 					{% endfor %}
 					]);
 			

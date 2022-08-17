@@ -1,4 +1,20 @@
 <?php
+
+//////////////////////////////////////////////////////////////FIRESTORE THING ////////////////////////////////////////////////////
+
+require 'vendor/autoload.php';
+
+use Google\Cloud\Firestore\FirestoreClient;
+
+
+$db = new FirestoreClient([
+        'projectId' => 'danskhrskip',
+        'keyFilePath' =>  'firebasekey.json',
+
+    ]);
+
+////////////////////////////////////////////////////////////// END FIRESTORE THING ////////////////////////////////////////////////////
+
 //Import PHPMailer classes into the global namespace
 //These must be at the top of your script, not inside a function
 use PHPMailer\PHPMailer\PHPMailer;
@@ -119,6 +135,16 @@ EOT;
             $msg = 'Beskeden blev sendt! En bekræftelsesmail er sendt afsted til din e-mail';
 			// Send besked til DANSK HR HER
 			$mailintern ->send();
+			//Add data to database (collection is eventname and id in collection is customer email)
+			$docRef = $db->collection('{{ EventName }}')->document($_POST['E-mail']);
+			$docRef->set([
+					'BilletType' => {$_POST["BilletRadio"]},
+					{% for Field,req,stripped in FeltList %}
+					'{{ Field }}'=> {$_POST['{{ stripped }}']},
+					{% endfor %}
+					]);
+			
+			// Redirection
 			header('Location: ThankYou.html');
 			exit();
         }
@@ -136,6 +162,16 @@ EOT;
             $msg = 'Beskeden blev sendt! En bekræftelsesmail er sendt afsted til din e-mail';
 			// Send besked til DANSK HR HER
 			$mailintern ->send();
+			//Add data to database (collection is eventname and id in collection is customer email)
+			$docRef = $db->collection('{{ EventName }}')->document($_POST['E-Mail']);
+			$docRef->set([
+					'BilletType' => {$_POST["BilletRadio"]},
+					{% for Field,req,stripped in FeltList %}
+					'{{ Field }}'=> {$_POST['{{ stripped }}']},
+					{% endfor %}
+					]);
+			
+			// Redirection
 			header('Location: ThankYou.html');
 			exit();
         }	
@@ -153,6 +189,16 @@ EOT;
             $msg = 'Beskeden blev sendt! En bekræftelsesmail er sendt afsted til din e-mail';
 			// Send besked til DANSK HR HER
 			$mailintern ->send();
+			//Add data to database (collection is eventname and id in collection is customer email)
+			$docRef = $db->collection('{{ EventName }}')->document($_POST['e-Mail']);
+			$docRef->set([
+					'BilletType' => {$_POST["BilletRadio"]},
+					{% for Field,req,stripped in FeltList %}
+					'{{ Field }}'=> {$_POST['{{ stripped }}']},
+					{% endfor %}
+					]);
+			
+			// Redirection
 			header('Location: ThankYou.html');
 			exit();
         }	
@@ -170,6 +216,16 @@ EOT;
             $msg = 'Beskeden blev sendt! En bekræftelsesmail er sendt afsted til din e-mail';
 			// Send besked til DANSK HR HER
 			$mailintern ->send();
+			//Add data to database (collection is eventname and id in collection is customer email)
+			$docRef = $db->collection('{{ EventName }}')->document($_POST['e-mail']);
+			$docRef->set([
+					'BilletType' => {$_POST["BilletRadio"]},
+					{% for Field,req,stripped in FeltList %}
+					'{{ Field }}'=> {$_POST['{{ stripped }}']},
+					{% endfor %}
+					]);
+			
+			// Redirection
 			header('Location: ThankYou.html');
 			exit();
         }	
@@ -187,6 +243,16 @@ EOT;
             $msg = 'Beskeden blev sendt! En bekræftelsesmail er sendt afsted til din e-mail';
 			// Send besked til DANSK HR HER
 			$mailintern ->send();
+			//Add data to database (collection is eventname and id in collection is customer email)
+			$docRef = $db->collection('{{ EventName }}')->document($_POST['Email']);
+			$docRef->set([
+					'BilletType' => {$_POST["BilletRadio"]},
+					{% for Field,req,stripped in FeltList %}
+					'{{ Field }}'=> {$_POST['{{ stripped }}']},
+					{% endfor %}
+					]);
+			
+			// Redirection
 			header('Location: ThankYou.html');
 			exit();
         }	
@@ -204,6 +270,16 @@ EOT;
             $msg = 'Beskeden blev sendt! En bekræftelsesmail er sendt afsted til din e-mail';
 			// Send besked til DANSK HR HER
 			$mailintern ->send();
+			//Add data to database (collection is eventname and id in collection is customer email)
+			$docRef = $db->collection('{{ EventName }}')->document($_POST['EMail']);
+			$docRef->set([
+					'BilletType' => {$_POST["BilletRadio"]},
+					{% for Field,req,stripped in FeltList %}
+					'{{ Field }}'=> {$_POST['{{ stripped }}']},
+					{% endfor %}
+					]);
+			
+			// Redirection
 			header('Location: ThankYou.html');
 			exit();
         }	
@@ -221,6 +297,16 @@ EOT;
             $msg = 'Beskeden blev sendt! En bekræftelsesmail er sendt afsted til din e-mail';
 			// Send besked til DANSK HR HER
 			$mailintern ->send();
+			//Add data to database (collection is eventname and id in collection is customer email)
+			$docRef = $db->collection('{{ EventName }}')->document($_POST['email']);
+			$docRef->set([
+					'BilletType' => {$_POST["BilletRadio"]},
+					{% for Field,req,stripped in FeltList %}
+					'{{ Field }}'=> {$_POST['{{ stripped }}']},
+					{% endfor %}
+					]);
+			
+			// Redirection
 			header('Location: ThankYou.html');
 			exit();
         }	
@@ -238,6 +324,16 @@ EOT;
             $msg = 'Beskeden blev sendt! En bekræftelsesmail er sendt afsted til din e-mail';
 			// Send besked til DANSK HR HER
 			$mailintern ->send();
+			//Add data to database (collection is eventname and id in collection is customer email)
+			$docRef = $db->collection('{{ EventName }}')->document($_POST['eMail']);
+			$docRef->set([
+					'BilletType' => {$_POST["BilletRadio"]},
+					{% for Field,req,stripped in FeltList %}
+					'{{ Field }}'=> {$_POST['{{ stripped }}']},
+					{% endfor %}
+					]);
+			
+			// Redirection
 			header('Location: ThankYou.html');
 			exit();
         }	
@@ -255,6 +351,16 @@ EOT;
             $msg = 'Beskeden blev sendt! En bekræftelsesmail er sendt afsted til din e-mail';
 			// Send besked til DANSK HR HER
 			$mailintern ->send();
+			//Add data to database (collection is eventname and id in collection is customer email)
+			$docRef = $db->collection('{{ EventName }}')->document($_POST['E mail']);
+			$docRef->set([
+					'BilletType' => {$_POST["BilletRadio"]},
+					{% for Field,req,stripped in FeltList %}
+					'{{ Field }}'=> {$_POST['{{ stripped }}']},
+					{% endfor %}
+					]);
+			
+			// Redirection
 			header('Location: ThankYou.html');
 			exit();
         }	
@@ -272,6 +378,16 @@ EOT;
             $msg = 'Beskeden blev sendt! En bekræftelsesmail er sendt afsted til din e-mail';
 			// Send besked til DANSK HR HER
 			$mailintern ->send();
+			//Add data to database (collection is eventname and id in collection is customer email)
+			$docRef = $db->collection('{{ EventName }}')->document($_POST['E Mail']);
+			$docRef->set([
+					'BilletType' => {$_POST["BilletRadio"]},
+					{% for Field,req,stripped in FeltList %}
+					'{{ Field }}'=> {$_POST['{{ stripped }}']},
+					{% endfor %}
+					]);
+			
+			// Redirection
 			header('Location: ThankYou.html');
 			exit();
         }	
@@ -289,6 +405,16 @@ EOT;
             $msg = 'Beskeden blev sendt! En bekræftelsesmail er sendt afsted til din e-mail';
 			// Send besked til DANSK HR HER
 			$mailintern ->send();
+			//Add data to database (collection is eventname and id in collection is customer email)
+			$docRef = $db->collection('{{ EventName }}')->document($_POST['e Mail']);
+			$docRef->set([
+					'BilletType' => {$_POST["BilletRadio"]},
+					{% for Field,req,stripped in FeltList %}
+					'{{ Field }}'=> {$_POST['{{ stripped }}']},
+					{% endfor %}
+					]);
+			
+			// Redirection
 			header('Location: ThankYou.html');
 			exit();
         }	
@@ -306,6 +432,16 @@ EOT;
             $msg = 'Beskeden blev sendt! En bekræftelsesmail er sendt afsted til din e-mail';
 			// Send besked til DANSK HR HER
 			$mailintern ->send();
+			//Add data to database (collection is eventname and id in collection is customer email)
+			$docRef = $db->collection('{{ EventName }}')->document($_POST['e mail']);
+			$docRef->set([
+					'BilletType' => {$_POST["BilletRadio"]},
+					{% for Field,req,stripped in FeltList %}
+					'{{ Field }}'=> {$_POST['{{ stripped }}']},
+					{% endfor %}
+					]);
+			
+			// Redirection
 			header('Location: ThankYou.html');
 			exit();
         }	

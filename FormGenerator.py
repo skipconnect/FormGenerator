@@ -828,7 +828,7 @@ padding:10px;
 					{% for Navn,Pris in BilletList %}
                     <div>
                         <label>
-                            <input type="radio" id="{{ Navn }}_{{ Pris }}_DKK" name="BilletRadio" value="{{ Navn }}_{{ Pris }}_DKK">
+                            <input type="{{ 'radio' if MultiBillet == 'Nej' else 'checkbox' }}" id="{{ Navn }}_{{ Pris }}_DKK" name="BilletRadio" value="{{ Navn }}_{{ Pris }}_DKK">
                             <span>{{ Navn }} ({{ Pris }} DKK)</span>
                         </label>
                     </div>

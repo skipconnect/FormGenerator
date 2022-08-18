@@ -67,7 +67,11 @@ if (isset($_POST['Submit']) && !isset($_POST['BilletRadio'])){
 	$msg = 'Ingen billet valgt. Prøv igen.';
 	$valid = 'no';
 }
-
+{% if MultiBillet == "Ja" %}
+elseif (isset($_POST['Submit']) && isset($_POST['BilletRadio'])) {
+	$billetter = implode(",", $_POST['BilletRadio']);
+}
+{% endif %}
 
 //Don't run this unless we're handling a form submission
 if (isset($_POST['Submit']) && $valid == "yes") {
@@ -96,7 +100,12 @@ if (isset($_POST['Submit']) && $valid == "yes") {
     $mail->isHTML(false);
 	$mail->Body = <<<EOT
 Mange tak for din tilmelding til "{{ EventName }}", vi har modtaget til tilmelding og du hører fra os. Du har indtastet følgende informationer:
+{% if MultiBillet == "Ja" %}
+BilletType: {$billetter}
+{% endif %}
+{% if MultiBillet == "Nej" %}
 BilletType: {$_POST["BilletRadio"]}
+{% endif %}
 {% for Field,req,stripped in FeltList %}
 {{ Field }}: {$_POST['{{ stripped }}']}
 {% endfor %}
@@ -136,7 +145,12 @@ EOT;
     $mailintern->isHTML(false);
 	$mailintern->Body = <<<EOT
 Ny Tilmelding til {{ EventName }} med følgende informationer:
+{% if MultiBillet == "Ja" %}
+BilletType: {$billetter}
+{% endif %}
+{% if MultiBillet == "Nej" %}
 BilletType: {$_POST["BilletRadio"]}
+{% endif %}
 {% for Field,req,stripped in FeltList %}
 {{ Field }}: {$_POST['{{ stripped }}']}
 {% endfor %}
@@ -161,7 +175,7 @@ EOT;
 			//Add data to database (collection is eventname and id in collection is customer email)
 			$docRef = $db->collection('{{ EventName }}')->document($_POST['E-mail']);
 			$docRef->set([
-					'BilletType' => $_POST["BilletRadio"],
+					'BilletType' => {{ '$_POST["BilletRadio"]' if MultiBillet == "Nej" else '$billetter' }},
 					{% for Field,req,stripped in FeltList %}
 					'{{ Field }}'=> $_POST['{{ stripped }}'],
 					{% endfor %}
@@ -188,7 +202,7 @@ EOT;
 			//Add data to database (collection is eventname and id in collection is customer email)
 			$docRef = $db->collection('{{ EventName }}')->document($_POST['E-Mail']);
 			$docRef->set([
-					'BilletType' => $_POST["BilletRadio"],
+					'BilletType' => {{ '$_POST["BilletRadio"]' if MultiBillet == "Nej" else '$billetter' }},
 					{% for Field,req,stripped in FeltList %}
 					'{{ Field }}'=> $_POST['{{ stripped }}'],
 					{% endfor %}
@@ -215,7 +229,7 @@ EOT;
 			//Add data to database (collection is eventname and id in collection is customer email)
 			$docRef = $db->collection('{{ EventName }}')->document($_POST['e-Mail']);
 			$docRef->set([
-					'BilletType' => $_POST["BilletRadio"],
+					'BilletType' => {{ '$_POST["BilletRadio"]' if MultiBillet == "Nej" else '$billetter' }},
 					{% for Field,req,stripped in FeltList %}
 					'{{ Field }}'=> $_POST['{{ stripped }}'],
 					{% endfor %}
@@ -242,7 +256,7 @@ EOT;
 			//Add data to database (collection is eventname and id in collection is customer email)
 			$docRef = $db->collection('{{ EventName }}')->document($_POST['e-mail']);
 			$docRef->set([
-					'BilletType' => $_POST["BilletRadio"],
+					'BilletType' => {{ '$_POST["BilletRadio"]' if MultiBillet == "Nej" else '$billetter' }},
 					{% for Field,req,stripped in FeltList %}
 					'{{ Field }}'=> $_POST['{{ stripped }}'],
 					{% endfor %}
@@ -269,7 +283,7 @@ EOT;
 			//Add data to database (collection is eventname and id in collection is customer email)
 			$docRef = $db->collection('{{ EventName }}')->document($_POST['Email']);
 			$docRef->set([
-					'BilletType' => $_POST["BilletRadio"],
+					'BilletType' => {{ '$_POST["BilletRadio"]' if MultiBillet == "Nej" else '$billetter' }},
 					{% for Field,req,stripped in FeltList %}
 					'{{ Field }}'=> $_POST['{{ stripped }}'],
 					{% endfor %}
@@ -296,7 +310,7 @@ EOT;
 			//Add data to database (collection is eventname and id in collection is customer email)
 			$docRef = $db->collection('{{ EventName }}')->document($_POST['EMail']);
 			$docRef->set([
-					'BilletType' => $_POST["BilletRadio"],
+					'BilletType' => {{ '$_POST["BilletRadio"]' if MultiBillet == "Nej" else '$billetter' }},
 					{% for Field,req,stripped in FeltList %}
 					'{{ Field }}'=> $_POST['{{ stripped }}'],
 					{% endfor %}
@@ -323,7 +337,7 @@ EOT;
 			//Add data to database (collection is eventname and id in collection is customer email)
 			$docRef = $db->collection('{{ EventName }}')->document($_POST['email']);
 			$docRef->set([
-					'BilletType' => $_POST["BilletRadio"],
+					'BilletType' => {{ '$_POST["BilletRadio"]' if MultiBillet == "Nej" else '$billetter' }},
 					{% for Field,req,stripped in FeltList %}
 					'{{ Field }}'=> $_POST['{{ stripped }}'],
 					{% endfor %}
@@ -350,7 +364,7 @@ EOT;
 			//Add data to database (collection is eventname and id in collection is customer email)
 			$docRef = $db->collection('{{ EventName }}')->document($_POST['eMail']);
 			$docRef->set([
-					'BilletType' => $_POST["BilletRadio"],
+					'BilletType' => {{ '$_POST["BilletRadio"]' if MultiBillet == "Nej" else '$billetter' }},
 					{% for Field,req,stripped in FeltList %}
 					'{{ Field }}'=> $_POST['{{ stripped }}'],
 					{% endfor %}
@@ -377,7 +391,7 @@ EOT;
 			//Add data to database (collection is eventname and id in collection is customer email)
 			$docRef = $db->collection('{{ EventName }}')->document($_POST['E mail']);
 			$docRef->set([
-					'BilletType' => $_POST["BilletRadio"],
+					'BilletType' => {{ '$_POST["BilletRadio"]' if MultiBillet == "Nej" else '$billetter' }},
 					{% for Field,req,stripped in FeltList %}
 					'{{ Field }}'=> $_POST['{{ stripped }}'],
 					{% endfor %}
@@ -404,7 +418,7 @@ EOT;
 			//Add data to database (collection is eventname and id in collection is customer email)
 			$docRef = $db->collection('{{ EventName }}')->document($_POST['E Mail']);
 			$docRef->set([
-					'BilletType' => $_POST["BilletRadio"],
+					'BilletType' => {{ '$_POST["BilletRadio"]' if MultiBillet == "Nej" else '$billetter' }},
 					{% for Field,req,stripped in FeltList %}
 					'{{ Field }}'=> $_POST['{{ stripped }}'],
 					{% endfor %}
@@ -431,7 +445,7 @@ EOT;
 			//Add data to database (collection is eventname and id in collection is customer email)
 			$docRef = $db->collection('{{ EventName }}')->document($_POST['e Mail']);
 			$docRef->set([
-					'BilletType' => $_POST["BilletRadio"],
+					'BilletType' => {{ '$_POST["BilletRadio"]' if MultiBillet == "Nej" else '$billetter' }},
 					{% for Field,req,stripped in FeltList %}
 					'{{ Field }}'=> $_POST['{{ stripped }}'],
 					{% endfor %}
@@ -458,7 +472,7 @@ EOT;
 			//Add data to database (collection is eventname and id in collection is customer email)
 			$docRef = $db->collection('{{ EventName }}')->document($_POST['e mail']);
 			$docRef->set([
-					'BilletType' => $_POST["BilletRadio"],
+					'BilletType' => {{ '$_POST["BilletRadio"]' if MultiBillet == "Nej" else '$billetter' }},
 					{% for Field,req,stripped in FeltList %}
 					'{{ Field }}'=> $_POST['{{ stripped }}'],
 					{% endfor %}
@@ -1029,6 +1043,9 @@ for i in range(BT):
     BT1 = col1.text_input('Billet type {number}'.format(number=i+1), placeholder='Navn på Billet-typen ', key="BT_type"+str(i+1))
     BT2 = col2.text_input('Billet type {number} pris (DKK)'.format(number=i+1), placeholder='Skriv prisen på billetten i DKK', key="BT_price"+str(i+1))
 
+#st.header("")
+st.subheader("Skal deltageren have mulighed for at vælge flere billettyper?")
+MultiBillet = st.selectbox("Tag stilling til om deltageren må vælge flere billett-typer", ("Nej", "Ja"), key="MultiBillet")
 
 
 ## Felter
@@ -1039,10 +1056,12 @@ F = st.slider('Slide for at vælge antallet af ønskede tilmeldingsfelter', 0, 2
 
 
 col1, col2 = st.columns(2)
-
+options = ["Navn", "E-mail", "Titel", "Firma/Organisation", "Adresse", "Adresse fortsat", "Postnr.", "By", "Mobilnummer", "CVR nummer", "EAN nummer"]
 for i in range(F):
-    F1 = col1.text_input('Felt {number}'.format(number=i+1), placeholder='Skriv hvilket felt der ønskes her', key="F_type"+str(i+1))
+    #F1 = col1.text_input('Felt {number}'.format(number=i+1), placeholder='Skriv hvilket felt der ønskes her', key="F_type"+str(i+1))
+    F1 = col1.selectbox('Felt {number}'.format(number=i+1), options, key="F_type"+str(i+1))
     F2 = col2.selectbox('Er feltet påkrævet?'.format(number=i+1),("Ja","Nej"), key="F_req"+str(i+1))
+
 
 ###PASSWORD
 st.header("")
@@ -1129,7 +1148,8 @@ if st.button('Færdig', key="DoneButton") or st.session_state.button_clicked:
                            ContactEmail = st.session_state["ContactEmail"],
                            ContactPhone = st.session_state["ContactPhone"],
                            BilletList = BilletList,
-                           FeltList = FeltList
+                           FeltList = FeltList,
+                           MultiBillet = MultiBillet
                            ).encode( "utf-8" )
         if Pass == DownloadPass:
             st.download_button('Download webpage', output, file_name = "madstest.php")

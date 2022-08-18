@@ -46,7 +46,7 @@ if (isset($_POST['Submit']) && !isset($_POST['BilletRadio'])){
 }
 {% if MultiBillet == "Ja" %}
 elseif (isset($_POST['Submit']) && isset($_POST['BilletRadio'])) {
-	$billetter = implode(",", $_POST['BilletRadio']);
+	$billetter = implode(" + ", $_POST['BilletRadio']);
 }
 {% endif %}
 

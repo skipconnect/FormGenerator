@@ -831,7 +831,7 @@ if st.button('Færdig', key="DoneButton") or st.session_state.button_clicked:
         for elem in FeltNames:
             if FeltNames.count(elem)>1:
                 st.warning("Du har indtastet {elem} mere end 1 gang. Dette er ikke muligt!".format(elem=elem))
-        st.warning("Det samme")
+                break
      if st.button("Bekræft", key="Confirm", on_click=button_callback):
         st.subheader("Du er Færdig!")
         tm = Template(php_file)

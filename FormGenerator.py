@@ -826,7 +826,12 @@ if st.button('Færdig', key="DoneButton") or st.session_state.button_clicked:
      st.header("")
      st.header("")
      st.header("")
-     
+     FeltNames = [st.session_state["F_type"+str(i+1)] for i in range(F)]
+     if len(FeltNames) != len(set(FeltNames)):
+        for elem in FeltNames:
+            if FeltNames.count(elem)>1:
+                st.warning("Du har indtastet {elem} mere end 1 gang. Dette er ikke muligt!".format(elem=elem))
+        st.warning("Det samme")
      if st.button("Bekræft", key="Confirm", on_click=button_callback):
         st.subheader("Du er Færdig!")
         tm = Template(php_file)
